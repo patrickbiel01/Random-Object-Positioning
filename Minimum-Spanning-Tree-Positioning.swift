@@ -5,18 +5,23 @@
         1. Atleast 36 tiles away from each player
         2. Have a similiar length: ± 7
      */
-    func MSTBasedFairPosition() {
+    func MSTBasedFairPosition(
+        graph: GKGridGraph<GKGridGraphNode>,
+        tileManager: TileManager,
+        playerPosition: CGPoint,
+        opponentPosition: CGPoint
+    ) {
         //Get Player Pos
-        let playerPosGrid = gameScene!.tileManager!.indexFrom(position: gameScene!.player1!.position)
+        let playerPosGrid = tileManager.indexFrom(position: playerPosition)
         //Convert 2-D mapping to 1-D
         let playerPos = playerPosGrid.row*Maze.MAX_COLUMNS + playerPosGrid.column
         //Get map of all distances
-        let mappedDist1 = distances(from: playerPos, using: gameScene!.mazeGraph!)
+        let mappedDist1 = distances(from: playerPos, using: graph)
         
         //Repeat for opponent
-        let oppPosGrid = gameScene!.tileManager!.indexFrom(position: gameScene!.opponent!.position)
+        let oppPosGrid = tileManager.indexFrom(position: opponentPosition)
         let oppPos = oppPosGrid.row*Maze.MAX_COLUMNS + oppPosGrid.column
-        let mappedDist2 = distances(from: oppPos, using: gameScene!.mazeGraph!)
+        let mappedDist2 = distances(from: oppPos, using: graph)
         
         var viableTile = [GridPosition]()
         //Compare each mapping to find ideal tile for trophy placement
@@ -32,13 +37,22 @@
             }
         }
         if viableTile.isEmpty {
-            CircleBasedRandomPositioning()
+            
+            //
+            //Default value
+            //
+            object.position = CGPoint.zero
+            
             return
         }
         
         let randPos = viableTile.randomElement()!
-        let tile = gameScene!.tileManager!.getTile(row: randPos.row, column: randPos.column)
-        position = tile.position
+        let tile = tileManager.getTile(row: randPos.row, column: randPos.column)
+        
+        //
+        //  object represents Object that is going to be randomly positioned
+        //
+        object.position = tile.position
         
     }
     /*
