@@ -15,7 +15,23 @@ Given a player position, an opponent position, and a graph representing the maze
 * The Queue data structure used is available [here](https://github.com/raywenderlich/swift-algorithm-club/blob/master/Breadth-First%20Search/BreadthFirstSearch.playground/Sources/Queue.swift).
 
 ## Algorithm Explanation
-* Uses a modified breadth first search to create a minimum spanning tree (a mapping of every node and their distance from a source node) for both players
-+ These mappings are represented with a 2-D array of verticies and are analyzed to find a node that is: 
+#### Before Positioning:
+![Prior to Positioning](https://github.com/patrickbiel01/Random-Object-Positioning/blob/master/Simulator%20Screen%20Shot%20-%20iPhone%20SE%20-%202019-08-29%20at%2023.17.46.png)
+--  
+
+
+* **Uses a modified breadth first search to create a minimum spanning tree (a mapping of every node and their distance from a source node) for both players**
+
+#### Player MST:
+![Player MST](https://github.com/patrickbiel01/Random-Object-Positioning/blob/master/Screen%20Shot%202019-08-29%20at%2011.19.15%20PM.png)
+#### Opponent MST:
+![Opponent MST](https://github.com/patrickbiel01/Random-Object-Positioning/blob/master/Screen%20Shot%202019-08-29%20at%2011.19.37%20PM.png)
+--  
+
+
++ These mappings are represented with a 2-D array of verticies and are analyzed to find a node that is:
     1. Atleast 36 tiles away from each player
     2. Have a similiar shortest path to each player: ± 7
+
+#### After Positioning:
+![After to Positioning](https://github.com/patrickbiel01/Random-Object-Positioning/blob/master/Simulator%20Screen%20Shot%20-%20iPhone%20SE%20-%202019-08-29%20at%2023.20.30.png)
