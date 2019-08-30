@@ -1,5 +1,8 @@
 # Random Object Positioning in a Maze
 
+### Used in the Relic Race App:
+Avaialble on the iOS App Store [here](https://apps.apple.com/ca/app/relic-race/id1476996951)
+
 ## Abstract: 
 Given a player position, an opponent position, and a graph representing the maze, this algorithm finds a spot to place          an object whose position is pseudo-random and whose shortest-path is also a more or less equal distance to both                players.
 
